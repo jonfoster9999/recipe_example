@@ -1,0 +1,5 @@
+<h5 class="text-success"><%= link_to 'Create New Recipe', "/recipes/new" %></h5>
+<hr>
+<% @recipes.each do |recipe| %>
+    <%= link_to recipe.name, recipe %><br>
+<% end %>

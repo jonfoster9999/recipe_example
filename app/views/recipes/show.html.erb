@@ -1,0 +1,15 @@
+<h2><%= @recipe.name %></h2>
+<p>Description: <span class="text-muted"><%= @recipe.description %></span></p>
+
+<hr>
+<p class="text-success">Ingredients:</p>
+<ul>
+    <% @recipe.recipe_ingredients.each do |r_i| %>
+    <li> <%= r_i.quantity %> - <%= Ingredient.find(r_i.ingredient_id).name %></li>
+    <% end %>
+</ul>
+<hr>
+<%= link_to 'Edit', edit_recipe_path(@recipe) %><br>
+<a href="/recipes/<%= @recipe.id %>/delete">Delete</a>
+<br>
+<%= link_to 'Back To Recipes', "/recipes" %>
