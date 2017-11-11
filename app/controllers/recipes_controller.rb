@@ -1,9 +1,9 @@
 class RecipesController < ApplicationController
     def new 
         @recipe = Recipe.new 
-        @recipe.ingredients.build
-        @recipe.ingredients.build
-        @recipe.ingredients.build
+        5.times do 
+            @recipe.ingredients.build
+        end
     end
 
     def index 
@@ -12,10 +12,7 @@ class RecipesController < ApplicationController
 
     def edit
         @recipe = Recipe.find(params[:id])
-        difference = 3 - @recipe.ingredients.length
-        difference.times do 
-            @recipe.ingredients.build
-        end
+        build_more_recipes @recipe
     end
 
     def create 
@@ -43,5 +40,11 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(:name, :description, :ingredients_attributes => {}, :ingredients => {})
     end
 
-
+    private
+    def build_more_recipes(recipe)
+        difference = 5 - recipe.ingredients.length
+        difference.times do 
+            recipe.ingredients.build
+        end
+    end
 end
