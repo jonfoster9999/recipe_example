@@ -25,10 +25,10 @@
     <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[ingredients][0][id]" %>
     <label>Quantity</label>
     <input type="text" name="recipe[ingredients][0][quantity]"><br>
-    <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :name => "recipe[ingredients][1][id]" %>
+    <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[ingredients][1][id]" %>
     <label>Quantity</label>
     <input type="text" name="recipe[ingredients][1][quantity]"><br>
-    <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :name => "recipe[ingredients][2][id]" %>
+    <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[ingredients][2][id]" %>
     <label>Quantity</label>
     <input type="text" name="recipe[ingredients][2][quantity]"><br>
     
