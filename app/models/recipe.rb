@@ -37,9 +37,8 @@ class Recipe < ApplicationRecord
         end
     end
 
-    def ingredients=(ingredient_ids)
-        ## just rename this because 'ingredient_ids' doesn't describe what this is
-        ingredient_objects = ingredient_ids
+    def ingredients=(ingredients)
+        ingredient_objects = ingredients
         ingredient_objects.each do |i, ingredient_object|
             if ingredient_object["id"] != ""
                ingredient = Ingredient.find(ingredient_object["id"])
