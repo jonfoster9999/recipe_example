@@ -12,6 +12,10 @@ class RecipesController < ApplicationController
 
     def edit
         @recipe = Recipe.find(params[:id])
+        difference = 3 - @recipe.ingredients.length
+        difference.times do 
+            @recipe.ingredients.build
+        end
     end
 
     def create 
