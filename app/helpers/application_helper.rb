@@ -8,11 +8,5 @@ module ApplicationHelper
         end
     end
 
-    def build_more_recipes(recipe)
-        difference = 3 - recipe.ingredients.length
-        difference.times do 
-            recipe.ingredients.build
-        end
-        recipe
-    end
+
 end
