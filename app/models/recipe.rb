@@ -1,6 +1,8 @@
 class Recipe < ApplicationRecord
     has_many :recipe_ingredients
     has_many :ingredients, through: :recipe_ingredients
+    validates :name, presence: true
+    validates :name, uniqueness: true
 
     def ingredients_attributes=(ingredients_attributes)
         ingredients_attributes.each do |key, value|
@@ -38,7 +40,6 @@ class Recipe < ApplicationRecord
     end
 
     def existing_ingredients=(ingredients)
-        binding.pry
         ingredient_objects = ingredients
         ingredient_objects.each do |i, ingredient_object|
             if ingredient_object["id"] != ""

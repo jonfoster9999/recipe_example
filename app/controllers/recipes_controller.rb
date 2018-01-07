@@ -16,8 +16,16 @@ class RecipesController < ApplicationController
     end
 
     def create
-        @recipe = Recipe.create(recipe_params)
-        redirect_to(@recipe)
+        @recipe = Recipe.new(recipe_params)
+        if @recipe.save
+          redirect_to(@recipe)
+        else
+          5.times do
+            @recipe.ingredients.build
+          end
+          flash[:notice] = @recipe.errors.full_messages.first
+          render :new
+        end
     end
 
     def show

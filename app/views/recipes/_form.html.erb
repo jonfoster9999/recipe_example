@@ -10,27 +10,29 @@
     </div>
     <fieldset>
         <legend>Ingredients:</legend>
+        <h5>Create new ingredients and associate them with this recipe:</h5>
         <% recipe.ingredients.each.with_index do |ingredient, index| %>
             <%= f.fields_for :ingredients, ingredient do |ing_builder| %>
                 <%= ing_builder.label :name %>
                 <%= ing_builder.text_field :name %>
                 <label>Quantity</label>
                 <input type="text" name="recipe[ingredients_attributes][<%= index %>][quantity]"
-                    value="<%= find_quantity @recipe, ingredient %>">
+                    class="quantity_field" value="<%= find_quantity @recipe, ingredient %>">
             <% end %>
             <br>
         <% end %>
     </fieldset>
     <hr>
+    <h5>or choose from existing ingredients in the database</h5>
     <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[existing_ingredients][0][id]" %>
     <label>Quantity</label>
-    <input type="text" name="recipe[existing_ingredients][0][quantity]"><br>
+    <input type="text" name="recipe[existing_ingredients][0][quantity]" class="quantity_field"><br>
     <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[existing_ingredients][1][id]" %>
     <label>Quantity</label>
-    <input type="text" name="recipe[existing_ingredients][1][quantity]"><br>
+    <input type="text" name="recipe[existing_ingredients][1][quantity]" class="quantity_field"><br>
     <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[existing_ingredients][2][id]" %>
     <label>Quantity</label>
-    <input type="text" name="recipe[existing_ingredients][2][quantity]"><br>
+    <input type="text" name="recipe[existing_ingredients][2][quantity]" class="quantity_field"><br>
 
     <%= f.submit :class=>"btn btn-primary" %>
 <% end %>
