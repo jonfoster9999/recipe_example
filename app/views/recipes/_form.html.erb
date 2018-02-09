@@ -23,16 +23,11 @@
         <% end %>
     </fieldset>
     <hr>
-    <h5>or choose from existing ingredients in the database</h5>
-    <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[existing_ingredients][0][id]" %>
-    <label>Quantity</label>
-    <input type="text" name="recipe[existing_ingredients][0][quantity]" class="quantity_field"><br>
-    <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[existing_ingredients][1][id]" %>
-    <label>Quantity</label>
-    <input type="text" name="recipe[existing_ingredients][1][quantity]" class="quantity_field"><br>
-    <%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[existing_ingredients][2][id]" %>
-    <label>Quantity</label>
-    <input type="text" name="recipe[existing_ingredients][2][quantity]" class="quantity_field"><br>
+    <h5>...or choose from existing ingredients in the database</h5>
+
+    <%= render partial: "recipes/existing_ingredients", locals: {index: 1, f: f} %>
+    <%= render partial: "recipes/existing_ingredients", locals: {index: 2, f: f} %>
+    <%= render partial: "recipes/existing_ingredients", locals: {index: 3, f: f} %>
 
     <%= f.submit :class=>"btn btn-primary" %>
 <% end %>

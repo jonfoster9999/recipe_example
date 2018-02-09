@@ -1,9 +1,7 @@
 class RecipesController < ApplicationController
     def new
         @recipe = Recipe.new
-        5.times do
-            @recipe.ingredients.build
-        end
+        build_ingredients(@recipe, 5)
     end
 
     def index
@@ -20,10 +18,8 @@ class RecipesController < ApplicationController
         if @recipe.save
           redirect_to(@recipe)
         else
-          5.times do
-            @recipe.ingredients.build
-          end
-          flash[:notice] = @recipe.errors.full_messages.first
+          build_ingredients(@recipe, 5)
+          flash.now[:notice] = @recipe.errors.full_messages.first
           render :new
         end
     end
@@ -54,5 +50,11 @@ class RecipesController < ApplicationController
         difference.times do
             recipe.ingredients.build
         end
+    end
+
+    def build_ingredients(recipe, num)
+      num.times do
+        recipe.ingredients.build
+      end
     end
 end

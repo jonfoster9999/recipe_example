@@ -39,8 +39,11 @@ class Recipe < ApplicationRecord
         end
     end
 
-    def existing_ingredients=(ingredients)
-        ingredient_objects = ingredients
+    def existing_ingredients=(existing_ingredients)
+      ## this method handles adding the existing ingredients with
+      ## quantities in the select-field area
+      
+        ingredient_objects = existing_ingredients
         ingredient_objects.each do |i, ingredient_object|
             if ingredient_object["id"] != ""
                ingredient = Ingredient.find(ingredient_object["id"])

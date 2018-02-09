@@ -1,0 +1,3 @@
+<%= f.select :ingredients, Ingredient.all.collect {|x| [x.name, x.id]}, {:include_blank => '-'}, :selected => " ", :name => "recipe[existing_ingredients][#{index}][id]" %>
+<label>Quantity</label>
+<input type="text" name="recipe[existing_ingredients][<%= index %>][quantity]" class="quantity_field"><br>
